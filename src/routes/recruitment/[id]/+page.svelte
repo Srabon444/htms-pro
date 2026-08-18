@@ -55,6 +55,11 @@
 				</select>
 				<button type="submit">Move</button>
 			</form>
+			<form method="POST" action="?/convertToHire" style="display:inline">
+				<input type="hidden" name="candidate_id" value={c.id} />
+				<input name="start_date" type="date" required />
+				<button type="submit">Convert to new hire</button>
+			</form>
 		</li>
 	{/each}
 </ul>
