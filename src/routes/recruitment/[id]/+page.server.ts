@@ -9,13 +9,19 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 		.single();
 	if (!opening) throw error(404, 'Job opening not found');
 
-	const { data: stages } = await locals.supabase
-		.from('hrms_pipeline_stages')
-		.select('id, name, sort_order')
-		.eq('job_opening_id', params.id)
-		.order('sort_order');
+	const [{ data: stages }, { data: candidates }] = await Promise.all([
+		locals.supabase
+			.from('hrms_pipeline_stages')
+			.select('id, name, sort_order')
+			.eq('job_opening_id', params.id)
+			.order('sort_order'),
+		locals.supabase
+			.from('hrms_candidates')
+			.select('id, name, source, current_stage_id')
+			.eq('job_opening_id', params.id)
+	]);
 
-	return { opening, stages: stages ?? [] };
+	return { opening, stages: stages ?? [], candidates: candidates ?? [] };
 };
 
 export const actions: Actions = {
@@ -39,5 +45,24 @@ export const actions: Actions = {
 			.from('hrms_pipeline_stages')
 			.update({ name: String(form.get('name')) })
 			.eq('id', String(form.get('stage_id')));
+	},
+	addCandidate: async ({ request, params, locals }) => {
+		const form = await request.formData();
+		await locals.supabase.from('hrms_candidates').insert({
+			job_opening_id: params.id,
+			name: String(form.get('name')),
+			source: String(form.get('source')),
+			current_stage_id: String(form.get('stage_id'))
+		});
+	},
+	moveCandidate: async ({ request, locals }) => {
+		const form = await request.formData();
+		const candidateId = String(form.get('candidate_id'));
+		const stageId = String(form.get('stage_id'));
+
+		await locals.supabase.from('hrms_candidates').update({ current_stage_id: stageId }).eq('id', candidateId);
+		await locals.supabase
+			.from('hrms_candidate_stage_history')
+			.insert({ candidate_id: candidateId, stage_id: stageId });
 	}
 };
