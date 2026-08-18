@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { computeFunnel } from '$lib/report/funnel';
+	import Chart from '$lib/components/Chart.svelte';
 	import type { PageData } from './$types';
 	let { data }: { data: PageData } = $props();
 
@@ -23,6 +24,8 @@
 		{/each}
 	</tbody>
 </table>
+
+<Chart type="bar" labels={funnel.map((f) => f.stageName)} data={funnel.map((f) => f.count)} label="Candidates" />
 
 <h2>Candidates</h2>
 <form method="POST" action="?/addCandidate">
