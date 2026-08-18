@@ -10,3 +10,4 @@
 	<label>Password <input name="password" type="password" required /></label>
 	<button type="submit">Log in</button>
 </form>
+<a href="/forgot-password">Forgot password?</a>

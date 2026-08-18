@@ -31,7 +31,8 @@ export const handle: Handle = async ({ event, resolve }) => {
 	};
 
 	const { session } = await event.locals.safeGetSession();
-	if (!session && event.url.pathname !== '/login') {
+	const PUBLIC_ROUTES = ['/login', '/forgot-password', '/reset-password'];
+	if (!session && !PUBLIC_ROUTES.includes(event.url.pathname)) {
 		throw redirect(303, '/login');
 	}
 
