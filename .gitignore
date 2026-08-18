@@ -21,3 +21,9 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Supabase CLI local scratch (pooler URL, linked project ref)
+supabase/.temp/
+
+# User's global ~/.config/git/ignore excludes *.md everywhere; explicitly keep the README
+!README.md
