@@ -16,13 +16,12 @@
 </svelte:head>
 
 <nav>
-	<a href="/">Dashboard</a>
 	<a href="/employees">Employees</a>
 	<a href="/attendance">Attendance</a>
 	<a href="/recruitment">Recruitment</a>
 	<a href="/issues">Issues</a>
 	<a href="/work-plan">Work Plan</a>
-	<a href="/report">Weekly Report</a>
+	<a href="/">Weekly Report</a>
 	<button onclick={logout}>Log out</button>
 </nav>
 
