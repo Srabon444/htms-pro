@@ -70,6 +70,13 @@ export const MODULES = {
 		on: false,
 		routes: ['travel']
 	},
+	forms: {
+		label: 'Forms and checklists',
+		about:
+			'Forms and read-and-sign checklists assigned once, daily or weekly, with photo and file answers, reminders and a submissions list.',
+		on: false,
+		routes: ['forms']
+	},
 	careers: {
 		label: 'Careers page',
 		about: 'A public page listing open jobs where anyone can apply with their CV, with spam and rate limits.',

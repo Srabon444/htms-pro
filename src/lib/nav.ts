@@ -259,6 +259,7 @@ export const NAV: NavItem[] = [
 		module: 'travel'
 	},
 	{ href: 'signatures', label: 'Signatures', group: 'My work', module: 'esign' },
+	{ href: 'forms', label: 'Forms', group: 'My work', module: 'forms' },
 	{ href: 'policies', label: 'Policies', group: 'Learn', active: true },
 	{ href: 'learning', label: 'Learning', group: 'Learn', module: 'learning' },
 	{ href: 'employees', label: 'Employees', group: 'People', perm: 'employee.read' },

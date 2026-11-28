@@ -216,6 +216,34 @@ rejected or cancelled minus the advance, unless finance rejected or cancelled it
 lists everyone's decided trips in scope with the same figures. Per diem is guidance only; nothing is paid
 automatically.
 
+## Forms, checklists and tasks
+
+Off by default; turn on "Forms and checklists" in Settings, Modules. My work, Forms. `form.manage` (HR admin) creates a
+form (title 1 to 120, description up to 1000) and adds up to 30 questions while it is a draft: text (up to 2000
+characters), number (up to 10 digits and 4 decimals), date, one choice or several choices (2 to 20 choices of up to 100
+characters), yes or no, photo (PNG, JPEG or WEBP), file (PDF or image) or read and confirm; at most 5 photo or file
+questions. A draft with at least one question can be published, after which its questions are fixed; only a draft can
+be deleted, and a published form can be archived, which hides it from everyone who has to fill it.
+
+A published form is assigned to everyone, a department and its sub-departments, a branch, or one person who has not
+left, once, every day or every week on a chosen weekday, from a start date that is not in the past to an optional end
+date, at most 50 live (not yet ended) assignments per form. A once assignment is filled once; a daily one once per day;
+a weekly one once per week, counted from the chosen weekday, with the start date opening the first part week. Each
+person sends a form once per period, even when several assignments reach them. A yes or no question is answered with
+Yes or No; when required, one of them must be picked. Ending an assignment nobody has sent yet that starts today or later
+deletes it; otherwise it ends yesterday (or on its start day), so it stops being due at once and the answers stay. Files
+share the 10 MB and 5 file limit of other attachments. The location is only sent when the person taps "Add my location".
+
+The hourly lifecycle job sends the reminder in the company time zone at the chosen hour to everyone who has not sent the
+current period, once per person and form: daily forms every day, once forms on each of their first 7 days, and weekly
+forms on the weekday and on the start date (category `forms`). Answers
+are read on the form page by `form.manage` and `form.read` within scope (department heads: department, line managers:
+team, HR admin: all); attached files open for the person who sent them and for those readers.
+
+Tasks: anyone can give a task (title up to 200, details up to 2000, optional due date not in the past) to themselves or
+to someone in their `employee.read` scope who has not left; the assignee is notified (category `tasks`). The assignee or
+the creator marks it done or reopens it, only the creator deletes it, and done tasks drop off after 30 days.
+
 ## Careers page
 
 Turn on "Careers page" in Settings, Modules, then set "Who can see it" on an opening to "Public careers page" (or "Job

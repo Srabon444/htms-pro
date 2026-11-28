@@ -6,6 +6,7 @@ import { runLearning } from './learning';
 import { runLeaveAccrual } from './leave';
 import { runCelebrations } from './directory';
 import { runEventReminders } from './events';
+import { runFormReminders } from './forms';
 import { runReferralRewards } from './job-board';
 import { extractFileText, reconcileFileTexts, type FileTextJob } from './file-text';
 import { deliverMail, type Mail } from './mail';
@@ -32,7 +33,8 @@ export const LIFECYCLE_STEPS: Record<string, () => Promise<unknown>> = {
 	fileTexts: reconcileFileTexts,
 	webhooks: runWebhooks,
 	referralRewards: runReferralRewards,
-	learning: runLearning
+	learning: runLearning,
+	formReminders: runFormReminders
 };
 
 export const processors: Record<QueueName, Processor> = {

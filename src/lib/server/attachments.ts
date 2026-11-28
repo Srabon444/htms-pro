@@ -8,6 +8,7 @@ import { changeAttachments } from './change-requests';
 import { checklistItemAttachments } from './checklists';
 import { auditEvent } from './audit';
 import { discardFiles } from './file-store';
+import { formSubmissionAttachments } from './forms';
 import { ticketAttachments, ticketCommentAttachments } from './helpdesk';
 import { certificationAttachments, lessonAttachments } from './learning';
 import { leaveAttachments } from './leave-requests';
@@ -41,6 +42,7 @@ const owners = (): Record<AttachmentOwner, AttachmentRules> => ({
 	change_request: changeAttachments,
 	candidate: candidateAttachments,
 	certification: certificationAttachments,
+	form_submission: formSubmissionAttachments,
 	checklist_item: checklistItemAttachments,
 	course_lesson: lessonAttachments,
 	education: educationAttachments,

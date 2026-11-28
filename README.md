@@ -137,6 +137,12 @@ Vitest · Playwright · Docker.
   month the trip ends. HR keeps daily per diem rates per country or city (a city rate wins), entered in the company
   currency. Expense claims can be linked to the claimant's own approved trip, and the trip shows the per diem guidance
   and the settlement: what was claimed minus the advance.
+- **Forms, checklists and tasks.** An optional module (off by default). HR builds a form from up to 30 questions
+  (text, number, date, one or several choices, yes or no, photo, file, or read and confirm), publishes it and assigns it
+  to everyone, a department (with its sub-departments), a branch or one person, once, every day or on one weekday,
+  with an hourly reminder to those who have not sent it. Employees fill it from the phone, with a camera photo and an
+  optional location; HR, department heads and line managers read the answers for the people in their scope. Anyone can
+  also give an ad-hoc task with an optional due date to themselves or to someone they can see; the assignee is notified.
 - **Kudos and announcement discussion.** Colleagues thank up to 10 people at once (20 kudos a day each), tagged
   with one of the company values HR lists; kudos show on a wall, on the home page and in a monthly count by value,
   and recipients are notified. Announcements get six reactions (counts only, no list of who reacted) and

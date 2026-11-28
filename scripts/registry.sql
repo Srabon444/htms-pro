@@ -151,6 +151,10 @@ insert into audit_registry (table_name, mode, plain_columns) values
 	('comp_proposals', 'row_only', '{}'),
 	('travel_requests', 'plain', '{id,tenant_id,employee_id,status,depart_on,return_on,requested_by_user_id,decided_by_user_id,decided_at,loan_id}'),
 	('per_diem_rates', 'plain', '{id,tenant_id,country,city,daily_amount}'),
+	('forms', 'plain', '{id,tenant_id,title,status,created_by_user_id}'),
+	('form_assignments', 'plain', '{id,tenant_id,form_id,audience,department_id,branch_id,employee_id,schedule,weekday,remind_hour,starts_on,ends_on,created_by_user_id}'),
+	('form_submissions', 'row_only', '{}'),
+	('tasks', 'plain', '{id,tenant_id,assignee_employee_id,due_on,status,created_by_user_id,done_at}'),
 	('report_shares', 'plain', '{id,tenant_id,report_id,title,period,recipient_membership_ids,shared_by_membership_id,shared_by_user_id,expires_on}')
 on conflict (table_name) do update set mode = excluded.mode, plain_columns = excluded.plain_columns;
 
