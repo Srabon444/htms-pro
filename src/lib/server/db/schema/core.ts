@@ -335,7 +335,8 @@ export const auditLog = pgTable(
 	(t) => [
 		tenantKey('audit_log', t),
 		index('audit_log_tenant_created_idx').on(t.tenantId, t.createdAt),
-		index('audit_log_tenant_row_idx').on(t.tenantId, t.tableName, t.rowId)
+		index('audit_log_tenant_row_idx').on(t.tenantId, t.tableName, t.rowId),
+		index('audit_log_actor_idx').on(t.tenantId, t.actorUserId, t.createdAt, t.id)
 	]
 );
 

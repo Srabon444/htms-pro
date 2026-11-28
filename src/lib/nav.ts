@@ -220,6 +220,7 @@ const REPORT_PERMS: Permission[] = [
 
 export const NAV: NavItem[] = [
 	{ href: '', label: 'Home', group: 'Workspace' },
+	{ href: 'me', label: 'Me', group: 'Workspace' },
 	{ href: 'notifications', label: 'Notifications', group: 'Workspace' },
 	{ href: 'approvals', label: 'Approvals', group: 'Workspace' },
 	{ href: 'calendar', label: 'Calendar', group: 'Workspace', perm: 'calendar.read', module: 'calendar' },
