@@ -244,6 +244,21 @@ Tasks: anyone can give a task (title up to 200, details up to 2000, optional due
 to someone in their `employee.read` scope who has not left; the assignee is notified (category `tasks`). The assignee or
 the creator marks it done or reopens it, only the creator deletes it, and done tasks drop off after 30 days.
 
+## Me page
+
+Workspace, Me, for every member. Details shows the linked employee record (name, code, work email, phone, department,
+designation, branch, manager, join date, status) and, for members with `employee.read`, links to the full profile, where edits and change requests follow
+the existing rules; a member with no employee record sees a note instead. Payslips repeats the paid payslip list.
+My requests lists the latest 20 of each of the person's own leave requests, attendance requests, expense claims, loans
+and advances, and help desk tickets, plus trips and form submissions while those modules are on, newest first, each
+linking to its module page; a group only shows when the member holds a permission that opens that page. Activity lists the person's own `audit_log` rows, 50 a page, newest first (an unknown or stale page link starts
+again from the newest): the time in the company time zone, a
+label for the table and the operation or event. Values are never read. Only user-facing tables are listed: leave,
+attendance and expense requests, loans, trips, tickets and replies, form submissions, tasks, change requests, kudos,
+announcement comments, files, policies and acknowledgements, letters, documents, signatures and employee records.
+Survey, suggestion, salary and payroll tables never appear. The `audit_log_actor_idx` index (tenant, actor, time, id)
+serves the page; nothing on it writes.
+
 ## Careers page
 
 Turn on "Careers page" in Settings, Modules, then set "Who can see it" on an opening to "Public careers page" (or "Job

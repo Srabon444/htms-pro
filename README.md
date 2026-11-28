@@ -143,6 +143,9 @@ Vitest · Playwright · Docker.
   with an hourly reminder to those who have not sent it. Employees fill it from the phone, with a camera photo and an
   optional location; HR, department heads and line managers read the answers for the people in their scope. Anyone can
   also give an ad-hoc task with an optional due date to themselves or to someone they can see; the assignee is notified.
+- **Me page.** One place for each person: their own details (edits go through the usual profile and change request
+  rules), their payslips, a read-only list of their latest requests across leave, attendance, expenses, loans, the help
+  desk, trips and forms, and their own activity (what they did and when, never the values).
 - **Kudos and announcement discussion.** Colleagues thank up to 10 people at once (20 kudos a day each), tagged
   with one of the company values HR lists; kudos show on a wall, on the home page and in a monthly count by value,
   and recipients are notified. Announcements get six reactions (counts only, no list of who reacted) and
