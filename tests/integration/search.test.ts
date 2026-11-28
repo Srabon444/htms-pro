@@ -167,6 +167,7 @@ beforeAll(async () => {
 		values (${a.id}, 'bonus', 'Zebra bonus', '2026-10', 'i', 'o', ${who.owner.m.user.userId}, now())`;
 
 	await saveModules(systemCtx(a.id), [...MODULE_IDS.filter((id) => MODULES[id].on), 'learning']);
+	await sql()`insert into kb_articles (tenant_id, title, status) values (${a.id}, 'Zebra how-to', 'published')`;
 	await sql()`insert into courses (tenant_id, title, status) values
 		(${a.id}, 'Zebra safety', 'published'), (${a.id}, 'Zebra draft course', 'draft')`;
 });

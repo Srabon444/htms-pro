@@ -18,6 +18,7 @@ import {
 	events,
 	expenseClaims,
 	jobOpenings,
+	kbArticles,
 	letters,
 	payrollRuns,
 	policies,
@@ -27,6 +28,7 @@ import {
 } from './db/schema';
 import { listedEvents } from './events';
 import { visibleTickets } from './helpdesk';
+import { articleScope } from './knowledge';
 import { tenantToday } from './lifecycle';
 import { log } from './log';
 import { moduleOverrides } from './modules';
@@ -43,6 +45,7 @@ export const SEARCH_KINDS = [
 	'document',
 	'letter',
 	'policy',
+	'article',
 	'announcement',
 	'event',
 	'ticket',
@@ -217,6 +220,26 @@ const PROVIDERS: Provider[] = [
 				title: r.title,
 				sub: joined(`Version ${r.version}`, r.active ? null : 'Inactive', r.snippet),
 				href: manager ? `policies/${r.id}` : `policies/${r.id}/file`
+			}));
+		}
+	},
+	{
+		kind: 'article',
+		allowed: ({ active }) => active,
+		async find({ tx, access, match, rank }) {
+			if (!moduleOn(await moduleOverrides(tx), 'knowledge')) return [];
+			const rows = await tx
+				.select({ id: kbArticles.id, title: kbArticles.title, status: kbArticles.status })
+				.from(kbArticles)
+				.where(and(await articleScope(tx, access), match(kbArticles.title, kbArticles.bodyMd)))
+				.orderBy(rank(kbArticles.title), asc(kbArticles.title))
+				.limit(PER_KIND);
+			return rows.map((r) => ({
+				kind: 'article',
+				id: r.id,
+				title: r.title,
+				sub: r.status === 'draft' ? 'Draft' : null,
+				href: `knowledge/${r.id}`
 			}));
 		}
 	},

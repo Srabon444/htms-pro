@@ -179,7 +179,7 @@ describe('module toggles', () => {
 			select modules_enabled as e, modules_disabled as d from tenant_settings where tenant_id = ${w.a.id}`;
 		expect(s).toEqual({
 			e: ['celebrations_birthdays'],
-			d: ['directory', 'calendar', 'events', 'schedule', 'surveys', 'kudos']
+			d: ['directory', 'calendar', 'events', 'schedule', 'surveys', 'kudos', 'knowledge']
 		});
 		await expect(saveModules(systemCtx(w.a.id), ['payroll'])).rejects.toThrow();
 		await saveModules(systemCtx(w.a.id), ['directory', 'calendar', 'events']);
