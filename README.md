@@ -107,6 +107,12 @@ Vitest · Playwright · Docker.
   applications per address per opening an hour, 200 per opening and 1000 per organisation a day. The CV is checked to
   be a real PDF (not a malware scan) and always downloads as an attachment. No email is ever sent to the applicant,
   and a repeat email shows the same thank-you page. A suspended organisation or the module being off answers 404.
+- **Knowledge base** (module, on by default). HR writes articles in a simple, safe markdown (headings, bold, italic,
+  lists and links; no HTML or images) inside folders up to 4 levels deep. Each folder is open to everyone, a department
+  (with its sub-departments) or a branch, and a folder inside a restricted one is open only to people who can open
+  both. Drafts are seen only by knowledge base managers. The page shows the active policies next to the articles,
+  switches between a list and a grid, and searches titles and text; articles also appear in global search under the
+  same rules.
 - **Learning** (module, off by default). HR builds courses from text, link (videos are plain links, nothing is
   embedded), file and quiz lessons, with a pass mark and up to 10 attempts per quiz. Quizzes are graded on the server and
   the correct answers never reach the learner's browser. Courses are assigned to everyone, a department (with its

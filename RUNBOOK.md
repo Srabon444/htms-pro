@@ -126,6 +126,19 @@ working, and voids it if the hire has left. Rewards are salary data: only the re
 see them, and only `salary.update` can mark one paid or void it; nothing is added to payroll, so pay it in the next run
 yourself.
 
+## Knowledge base
+
+Learn, Knowledge base (module `knowledge`, on by default). People with `kb.manage` (HR admin by default) add folders
+(name, who can open it: everyone, a department and its sub-departments, or a branch) up to 4 levels deep and at most
+200 in total, rename a folder or change who can open it, and delete a folder only when it is empty. A folder's parent
+cannot be changed. A folder is open to a person only when it and every folder above it are open to them; drafts and
+every folder are visible to managers. Articles have a title, a markdown body (at most 50,000 characters, rendered by
+the in-house safe renderer: no HTML, no images, http(s) links only) and draft or published status, and can be moved
+between folders. The top level also lists the active policies. Search looks in titles and text of the articles the
+person can open and in active policy titles and summaries (2 to 80 characters, 50 results). The global search
+provider `article` uses the same rules. The audit log keeps the title and status of articles but never the text. A
+department or branch used by a folder cannot be deleted until the folder is changed.
+
 ## Learning
 
 Turn on "Learning" in Settings, Modules. `course.manage` (HR admin) builds, publishes and assigns courses;
