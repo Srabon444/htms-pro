@@ -27,7 +27,9 @@ export const NOTIFICATION_CATEGORIES = {
 	feedback: 'Feedback and feedback requests',
 	jobs: 'Internal job applications from your team',
 	learning: 'Courses assigned to you and reminders before they are due',
-	signatures: 'Documents waiting for your signature and signed or declined requests'
+	signatures: 'Documents waiting for your signature and signed or declined requests',
+	forms: 'Forms to fill and their reminders',
+	tasks: 'Tasks assigned to you'
 } as const;
 
 export type NotificationCategory = keyof typeof NOTIFICATION_CATEGORIES;

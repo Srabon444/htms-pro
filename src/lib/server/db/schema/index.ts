@@ -28,3 +28,4 @@ export * from './learning';
 export * from './esign';
 export * from './comp';
 export * from './travel';
+export * from './forms';

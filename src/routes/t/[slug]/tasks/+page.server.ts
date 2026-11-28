@@ -2,6 +2,9 @@ import { filesFor } from '#lib/server/attachments.ts';
 import { attachmentAction } from '#lib/server/http/attachments.ts';
 import { myTasks, roleNames, setTaskDone } from '#lib/server/checklists.ts';
 import { actionError, field } from '#lib/server/http/forms.ts';
+import { employeeActionError as failed, formFields } from '#lib/server/http/employee-form.ts';
+import { sendAll } from '#lib/server/notifications.ts';
+import { createTask, deleteTask, setTaskStatus, taskBoard } from '#lib/server/tasks.ts';
 import { requireMember, userCtx } from '#lib/server/rbac/access.ts';
 import { inScope, resolveScope } from '#lib/server/rbac/scope.ts';
 import { withTenant } from '#lib/server/tenancy/index.ts';
@@ -21,7 +24,8 @@ export const load: PageServerLoad = async ({ locals }) => {
 					tasks.map((t) => t.id)
 				)
 			),
-			roleNames: await roleNames(tx)
+			roleNames: await roleNames(tx),
+			board: await taskBoard(tx, m)
 		};
 	});
 };
@@ -41,5 +45,35 @@ export const actions: Actions = {
 			return actionError(err, locals.requestId);
 		}
 		return { taskSaved: true };
+	},
+	create: async ({ request, locals }) => {
+		const m = requireMember(locals);
+		const form = formFields(await request.formData());
+		try {
+			await sendAll(await createTask(m, form));
+		} catch (err) {
+			return failed(err, locals.requestId, form);
+		}
+		return { done: 'Task added.' };
+	},
+	status: async ({ request, locals }) => {
+		const m = requireMember(locals);
+		const form = formFields(await request.formData());
+		try {
+			await setTaskStatus(m, form);
+		} catch (err) {
+			return failed(err, locals.requestId, form);
+		}
+		return { done: form.done === 'true' ? 'Task done.' : 'Task reopened.' };
+	},
+	remove: async ({ request, locals }) => {
+		const m = requireMember(locals);
+		const form = formFields(await request.formData());
+		try {
+			await deleteTask(m, form);
+		} catch (err) {
+			return failed(err, locals.requestId, form);
+		}
+		return { done: 'Task deleted.' };
 	}
 };
