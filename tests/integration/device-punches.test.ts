@@ -173,7 +173,7 @@ describe('adding attendance devices', () => {
 			expect(key.startsWith(`hrd_${row.prefix}_`)).toBe(true);
 			const [audit] = await ownerPool().sql`
 				select new_values from audit_log where tenant_id = ${tenant.id} and event = 'attendance_device.create'`;
-			expect(JSON.stringify(audit)).not.toContain(key.split('_')[2]);
+			expect(JSON.stringify(audit)).not.toContain(key.slice(`hrd_${row.prefix}_`.length));
 		});
 	});
 
