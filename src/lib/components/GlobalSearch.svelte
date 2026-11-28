@@ -12,6 +12,7 @@
 		document: 'Documents',
 		letter: 'Letters',
 		policy: 'Policies',
+		article: 'Knowledge base',
 		announcement: 'Announcements',
 		event: 'Events',
 		ticket: 'Tickets',

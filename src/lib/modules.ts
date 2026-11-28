@@ -49,6 +49,13 @@ export const MODULES = {
 		on: false,
 		routes: ['skills', 'jobs']
 	},
+	knowledge: {
+		label: 'Knowledge base',
+		about:
+			'Articles in folders, each folder open to everyone, a department or a branch, listed with the company policies.',
+		on: true,
+		routes: ['knowledge']
+	},
 	learning: {
 		label: 'Learning',
 		about:

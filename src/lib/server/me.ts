@@ -42,6 +42,8 @@ export const ACTIVITY_TABLES: Record<string, string> = {
 	kudos: 'Kudos',
 	announcement_comments: 'Announcement comment',
 	files: 'File',
+	kb_articles: 'Knowledge base article',
+	kb_folders: 'Knowledge base folder',
 	policies: 'Policy',
 	policy_acknowledgements: 'Policy acknowledgement',
 	letters: 'Letter',

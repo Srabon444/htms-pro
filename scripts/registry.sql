@@ -90,6 +90,8 @@ insert into audit_registry (table_name, mode, plain_columns) values
 	('employee_skills', 'plain', '{id,tenant_id,employee_id,skill_id,level,validated_by_user_id,validated_at}'),
 	('opening_skills', 'plain', '{id,tenant_id,opening_id,skill_id}'),
 	('referral_rewards', 'plain', '{id,tenant_id,candidate_id,employee_id,hired_employee_id,status,due_on,paid_at,paid_by_user_id}'),
+	('kb_folders', 'plain', '{id,tenant_id,parent_id,name,audience,department_id,branch_id,created_by_user_id}'),
+	('kb_articles', 'plain', '{id,tenant_id,folder_id,title,status,created_by_user_id,updated_by_user_id}'),
 	('courses', 'plain', '{id,tenant_id,title,pass_mark,max_attempts,status,created_by_user_id}'),
 	('course_lessons', 'plain', '{id,tenant_id,course_id,sort_order,kind,title,url}'),
 	('quiz_questions', 'row_only', '{}'),

@@ -261,6 +261,7 @@ export const NAV: NavItem[] = [
 	},
 	{ href: 'signatures', label: 'Signatures', group: 'My work', module: 'esign' },
 	{ href: 'forms', label: 'Forms', group: 'My work', module: 'forms' },
+	{ href: 'knowledge', label: 'Knowledge base', group: 'Learn', module: 'knowledge' },
 	{ href: 'policies', label: 'Policies', group: 'Learn', active: true },
 	{ href: 'learning', label: 'Learning', group: 'Learn', module: 'learning' },
 	{ href: 'employees', label: 'Employees', group: 'People', perm: 'employee.read' },
